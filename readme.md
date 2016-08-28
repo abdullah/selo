@@ -6,31 +6,32 @@ Selo is a trigger of  the  custom selection text  **end** event fire. [see](http
 
 ####İnstall
 
-    npm i selo -S
+`npm i selo -S`
 
 ##Set properties & Use
 
-    <script src="selopath/selo.min.js"></script>
-    //or
-	var Selo = require('selo');
-    //or
-	import Selo from 'require'
-	
-    var el = document.getElementById('selsection');
-    
-    var Selo = new Selo({
-	    el:el, // if you don't set el properties this properties set as body by Selo
-    	log:false, // if you don't want to see log you can pass log:true
-    });
 
-	document.addEventListener('selectionEnd',function () {
-		//Do this
-	})
+`<script src="selopath/selo.min.js"></script>
+//or
+var Selo = require('selo');
+//or
+import Selo from 'require'
 
-	document.addEventListener('selectionStart',function () {
-		//Do this
-	})
+var el = document.getElementById('selsection');
 
-	document.addEventListener('selectionBeforeStart',function () {
-		//Do this
-	})
+var Selo = new Selo({
+el:el, // if you don't set el properties this properties set as body by Selo
+log:false, // if you don't want to see log you can pass log:true
+});
+
+document.addEventListener('selectionEnd',function () {
+//Do this
+})
+
+document.addEventListener('selectionStart',function () {
+//Do this
+})
+
+document.addEventListener('selectionBeforeStart',function () {
+//Do this
+})`
