@@ -6,12 +6,13 @@ Selo is a trigger of  the  custom selection text  **end** event fire. [see](http
 
 ####İnstall
 
-`npm i selo -S`
+```npm i selo -S```
 
 ##Set properties & Use
 
 
-`<script src="selopath/selo.min.js"></script>
+```
+<script src="selopath/selo.min.js"></script>
 //or
 var Selo = require('selo');
 //or
@@ -33,5 +34,6 @@ document.addEventListener('selectionStart',function () {
 })
 
 document.addEventListener('selectionBeforeStart',function () {
-//Do this
-})`
+//Dothis
+})
+```
