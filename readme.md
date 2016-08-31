@@ -2,7 +2,7 @@
 ##Selo 
 
 
-Selo is a trigger of  the  custom selection text  **end** and fires event. [see](https://developer.mozilla.org/en-US/docs/Web/Events/selectionchange) 
+Selo is a trigger **end** of the custom selection text and fires event. [see](https://developer.mozilla.org/en-US/docs/Web/Events/selectionchange) 
 
 ####İnstall
 
