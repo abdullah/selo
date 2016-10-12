@@ -7,7 +7,7 @@ var getParents = require('./helpers')
 ;(function () {
 	
 	function Selo(props) {
-		if (!props.el) {
+		if (!props.els) {
         
         var log = props.log != undefined ? props.log : true
 
@@ -20,15 +20,15 @@ var getParents = require('./helpers')
 			throw "[Platfrom] not supported"
 		}
 
-		this.arena      = null;
+		this._arena      = null;
 		this.selection  = null;
-		this.el         = props.el || document.body;
+		this.els         = props.els || document.body;
 
 		this.init()
 	}
 
 	Selo.prototype.init = function () {
-		this.arena = this.el;
+		this._arena = this.els;
 		this.selection = window.getSelection()
 
 		this.attachEvent();
@@ -107,9 +107,20 @@ var getParents = require('./helpers')
     }
 
     Selo.prototype.inArena = function () {
+      var _arena = document.querySelectorAll(this._arena)
+      
       if (this.selection.focusNode) {
+
         var parents = getParents(this.selection.focusNode.parentNode);
-        return parents.indexOf(this.arena) != -1;
+        var tmp = false
+
+        Object.keys(_arena).map(e => {
+          if (parents.indexOf(_arena[e]) != -1) {
+            tmp = true
+          }
+        })
+
+        return tmp;
       }
       return false
     }
