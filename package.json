@@ -1,6 +1,6 @@
 {
   "name": "selo",
-  "version": "1.0.0",
+  "version": "1.0.3",
   "description": "This repository contains of text selection custom event.",
   "main": "build/selo.min.js",
   "scripts": {

@@ -42,7 +42,15 @@ var getParents = require('./helpers')
           beforeStartEvent    = new CustomEvent('selectionBeforeStart');
             
 
-      var map =  {65: false, 91: false};
+      var map =  {
+        65: false, 
+        91: false,
+        37: false,
+        38: false,
+        39: false,
+        40: false,
+        16: false,
+      };
       
       var listener = [
         "mouseup",
@@ -54,7 +62,6 @@ var getParents = require('./helpers')
           
 
           if (evt.type != "selectionchange" && evt.type != "mouseup") {
-
             if (evt.type == "keydown") {
               map[evt.keyCode] = true
 
@@ -65,14 +72,20 @@ var getParents = require('./helpers')
                   document.dispatchEvent(endEvent);
                 }
               }
-
-              Object.keys(map).map(function(e){
-                map[e] = false
-              })
-
+              else if ((map[16] && map[37]) || (map[16] && map[38]) || (map[16] && map[39]) || (map[16] && map[40]) ) {
+                if (this.hasText()) {
+                  document.dispatchEvent(endEvent);
+                }
+              }else{
+                // Object.keys(map).map(function(e){
+                //   map[e] = false
+                // })
+              }
             }
 
           }
+
+          console.log(map)
 
 
           if (evt.type == "selectionchange") {
