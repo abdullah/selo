@@ -85,9 +85,6 @@ var getParents = require('./helpers')
 
           }
 
-          console.log(map)
-
-
           if (evt.type == "selectionchange") {
             if (this.selection.type == "Range") {
               if (this.hasText()) {
