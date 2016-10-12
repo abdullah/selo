@@ -124,7 +124,7 @@ var getParents = require('./helpers')
         var parents = getParents(this.selection.focusNode.parentNode);
         var tmp = false
 
-        Object.keys(_arena).map(e => {
+        Object.keys(_arena).map(function(e)  {
           if (parents.indexOf(_arena[e]) != -1) {
             tmp = true
           }
