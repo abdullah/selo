@@ -18,22 +18,25 @@ var Selo = require('selo');
 //or
 import Selo from 'require'
 
-var el = document.getElementById('selsection');
-
 var Selo = new Selo({
-el:el, // if you don't set el property, this property set as body by Selo
-log:false, // if you don't want to see log you can pass log:true
+  log:false,
+  els : '.arena'
 });
 
+
 document.addEventListener('selectionEnd',function () {
-//Do this
+  console.log("End",Selo.getPositionRange())
+  document.querySelector('span').innerText = "End"
 })
 
 document.addEventListener('selectionStart',function () {
-//Do this
+  console.log("Start")
+  document.querySelector('span').innerText = "Start"
 })
 
 document.addEventListener('selectionBeforeStart',function () {
-//Dothis
+  console.log("Before Start")
+  document.querySelector('span').innerText = "Before Start"
 })
+
 ```
