@@ -3,9 +3,10 @@
 */
 
 var getParents = require('./helpers')
+var selectionPolify = require('./polyfill.js')
 
 ;(function () {
-	
+	selectionPolify.start();
 	function Selo(props) {
 		if (!props.els) {
         
