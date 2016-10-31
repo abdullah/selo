@@ -4,38 +4,38 @@
 
 var getParents = require('./helpers')
 var selectionPolify = require('./polyfill.js')
+selectionPolify.start();
 
 ;(function () {
-	selectionPolify.start();
-	function Selo(props) {
-		if (!props.els) {
+  function Selo(props) {
+    if (!props.els) {
         
         var log = props.log != undefined ? props.log : true
 
         if (log) {
           console.log("[El parameters] is not defined, this element set as body  ")
         }
-		}
+    }
 
-		if (!document) {
-			throw "[Platfrom] not supported"
-		}
+    if (!document) {
+      throw "[Platfrom] not supported"
+    }
 
-		this._arena      = null;
-		this.selection  = null;
-		this.els         = props.els || document.body;
+    this._arena      = null;
+    this.selection  = null;
+    this.els         = props.els || document.body;
 
-		this.init()
-	}
+    this.init()
+  }
 
-	Selo.prototype.init = function () {
-		this._arena = this.els;
-		this.selection = window.getSelection()
+  Selo.prototype.init = function () {
+    this._arena = this.els;
+    this.selection = window.getSelection()
 
-		this.attachEvent();
-	}
+    this.attachEvent();
+  }
 
-	Selo.prototype.attachEvent = function () {
+  Selo.prototype.attachEvent = function () {
 
        var selectionEndTimeout = null,
           endEvent            = new CustomEvent('selectionEnd'),
@@ -60,7 +60,6 @@ var selectionPolify = require('./polyfill.js')
         "keydown"
       ].map(function(e) {
         document.addEventListener(e.toString(), function(evt/*event*/) {
-          
 
           if (evt.type != "selectionchange" && evt.type != "mouseup") {
             if (evt.type == "keydown") {
@@ -87,15 +86,15 @@ var selectionPolify = require('./polyfill.js')
           }
 
           if (evt.type == "selectionchange") {
-            if (this.selection.type == "Range") {
+            // if (this.selection.type == "Range") {
               if (this.hasText()) {
                   document.dispatchEvent(startEvent);
               }
-            }else{
-                if (this.inArena()) {
-                  document.dispatchEvent(beforeStartEvent);
-                }
-            }
+            // }else{
+                // if (this.inArena()) {
+                //   document.dispatchEvent(beforeStartEvent);
+                // }
+            // }
             clearTimeout(selectionEndTimeout);
           }
 
@@ -108,9 +107,9 @@ var selectionPolify = require('./polyfill.js')
       }.bind(this))
 
     }
-	
-	
-	Selo.prototype.hasText = function () {
+  
+  
+  Selo.prototype.hasText = function () {
       if (this.inArena()) {
         return  this.selection.toString() != ""
       }
@@ -174,15 +173,15 @@ var selectionPolify = require('./polyfill.js')
     }
 
 
-	if (typeof exports == "object") {
-		module.exports = Selo
-	} else if (typeof define == "function" && define.amd) {
-	define([], function () {
-		return Selo
-	})
-	} else if (window.Vue) {
-		window.Selo = Selo
-	}
+  if (typeof exports == "object") {
+    module.exports = Selo
+  } else if (typeof define == "function" && define.amd) {
+  define([], function () {
+    return Selo
+  })
+  } else if (window.Vue) {
+    window.Selo = Selo
+  }
 
 
 
